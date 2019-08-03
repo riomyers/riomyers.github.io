@@ -40,6 +40,7 @@
     height: 100%;
     font-size: 7px;
     color: white;
+    animation: march 1.4s infinite linear;
     }
     div{margin-top: 100px;}
     a{text-decoration: none; color: white;}
@@ -49,7 +50,6 @@
     background-size: 20px;
     background-clip: text;
     text-stroke: 4px transparent;
-    animation: march 1.4s infinite linear;
 }
 
 @keyframes march {
@@ -75,90 +75,7 @@ Sincerely <span style="color: red">&hearts;</span><br>
   <source src="ants.ogg" type="video/ogg">
 Your shitty ass browser does not support the video element, get another one, IE sucks.
 </video>
-<!--
-<div class="addthis_toolbox addthis_floating_style addthis_counter_style" style="left:50px;top:50px;">
-<a class="addthis_button_facebook_like" fb:like:layout="box_count"></a>
-<a class="addthis_button_tweet" tw:count="vertical"></a>
-<a class="addthis_button_google_plusone" g:plusone:size="tall"></a>
-<a class="addthis_counter"></a>
-</div>
--->
 </center>
-<!--Scripts-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="http://theinternetnoob.com/prefix-free.js"></script>
-<script>
-(function() {
-
-var videoElement = document.createElement('video');
-
-window.__processVideo = function(videoElement) {
-        var div = document.createElement('div');
-        var sources = videoElement.getElementsByTagName('source');
-        for (var i = 0; i < sources.length; i++) {
-                if (sources[i].getAttribute('type') == 'video/mp4') {
-                        src = sources[i].getAttribute('src');
-                        break;
-                }
-        }
-
-        var autoplay = new Boolean(videoElement.getAttribute('autoplay'));
-        var autobuffer = new Boolean(videoElement.getAttribute('autobuffer'));
-
-        var flashvars = "config={'playerId':'player','clip':{'autoPlay':" + autoplay + ", 'autoBuffering':" + autobuffer + ",'url':'" + src + "'},'playlist':[{'url':'" + src + "'}]}";
-        html = '<object type="application/x-shockwave-flash" width="100%" height="100%">'
-                + ' <param name="flashvars" value="' + flashvars + '" />'
-                + ' <param name="movie" value="flowplayer-3.1.1.swf" />'
-                + '</object>';
-        div.innerHTML = html;
-        videoElement.appendChild(div);
-
-        div.style.cssText = videoElement.style.cssText;
-}
-
-// Test for native support first
-if (("autoplay" in videoElement))
-        return;
-
-// No native support, let's figure out how to do it
-
-// IE-style behaviors?
-if ("behavior" in videoElement.style) {
-        var style = document.createElement('style');
-        style.type = 'text/css';
-        style.styleSheet.cssText = "video { behavior: url(video4all.htc); }";
-
-        var anchorScript = document.getElementsByTagName('script')[0];
-        anchorScript.parentElement.insertBefore(style, anchorScript);
-
-        return;
-}
-
-// Mozilla-style bindings?
-if ("MozBinding" in videoElement.style) {
-        var style = document.createElement('style');
-        style.type = 'text/css';
-        style.textContent = 'video { display: block; -moz-binding: url("video4all.xml#video4all"); }';
-
-        var anchorScript = document.getElementsByTagName('script')[0];
-        anchorScript.parentNode.insertBefore(style, anchorScript);
-
-        return;
-}
-
-window.setInterval(function() {
-        var videos = document.body.getElementsByTagName('video');
-        for (var i = 0; i < videos.length; i++) {
-                if (videos[i].__processed)
-                        continue;
-
-                videos[i].__processed = true;
-                window.__processVideo(videos[i]);
-        }
-}, 3000);
-
-})();
-</script>
 </body>
 </html>
